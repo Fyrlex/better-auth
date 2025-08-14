@@ -184,6 +184,9 @@ export const auth = betterAuth({
 		sendResetPassword: async ({ user, url, token }) => {
 			// Send reset password email
 		},
+		onPasswordReset: async ({ user }) => {
+			// Do something when the password is reset
+		},
 		resetPasswordTokenExpiresIn: 3600, // 1 hour
 		password: {
 			hash: async (password) => {
@@ -206,8 +209,10 @@ export const auth = betterAuth({
 - `maxPasswordLength`: Maximum password length (default: `128`)
 - `autoSignIn`: Automatically sign in the user after sign up
 - `sendResetPassword`: Function to send reset password email
+- `onPasswordReset`: A callback function that is triggered when a user's password is changed successfully.
 - `resetPasswordTokenExpiresIn`: Number of seconds the reset password token is valid for (default: `3600` seconds)
 - `password`: Custom password hashing and verification functions
+- `revokeSessionsOnPasswordReset`: Whether to revoke all other sessions when resetting password (default: `false`)
 
 ## `socialProviders`
 
